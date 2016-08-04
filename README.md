@@ -17,29 +17,28 @@ For the Linux version: we'll make it clear this script is **only guaranteed to r
 ## List of tools to install
 
 General:
-* Postgres
-* MongoDB
-* Redis
-* Git (and tig)
-* Vim (SPF13?)
-* Node/nvm
-* Ruby/rbenv
-* wget
-* tmux (and/or screen)
-* heroku-toolbelt
-* foreman (good to test apps before deploying to Heroku)
-* htop
+* Git (and tig) √
+* Vim √ (SPF13?)
+* wget √
+* tmux (and/or screen) √
+* htop √
+* Postgres √
+* MongoDB √
+* Redis √
+* Node/nvm √
+* Ruby/rbenv √
+* heroku-toolbelt √
 * git-aware bash prompt √
-* Create and add `~/bin` to path (very useful for further customization)
+* Create and add `~/bin` to path (very useful for further customization) √
 * ssh key generation (maybe?)
 
 Linux:
-* The `build-essential` package, before everything else.
-* Postgres: include proper user setup script.
-  * Ensure `-dev` libraries are also installed.
-* Redis and MongoDB: `-dev` libraries must also be installed.
-* Ensure Postgres, Mongo and Redis are starting on boot
-  * Also show students how to stop and restart these services
+* The `build-essential` package, before everything else. √
+* Postgres: include proper user setup script. √
+  * Ensure `-dev` libraries are also installed. √
+* Redis and MongoDB: `-dev` libraries must also be installed. √
+* Ensure Postgres, Mongo and Redis are starting on boot √
+  * Also show students how to stop and restart these services 
 
 MacOS:
 * `xcode-select --install`
