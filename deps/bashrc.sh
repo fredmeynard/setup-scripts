@@ -139,10 +139,15 @@ if which rbenv > /dev/null; then
 fi
 
 # nvm stuff
-# TODO: Generalize for Linux
-if [ -f $(brew --prefix nvm)/nvm.sh ]; then
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
+if [ "$(uname)" == "Darwin" ]; then
+  if [ -f $(brew --prefix nvm)/nvm.sh ]; then
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+  fi
+fi
+if [ "$(uname)" == "Linux" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 fi
 
 # Postgres.app - Mac only
@@ -151,7 +156,7 @@ if [ -d /Applications ]; then
 fi
 
 # Adjust path
-ADDITIONAL_PATHS="/usr/local/bin /usr/local/sbin /usr/local/share/npm/bin $PGPATH/bin $HOME/bin"
+ADDITIONAL_PATHS="/usr/local/bin /usr/local/sbin /usr/local/share/npm/bin $HOME/.rbenv/bin $PGPATH/bin $HOME/bin"
 for p in $ADDITIONAL_PATHS; do
   if [ -d $p ] ; then
     PATH="$p:$PATH"
