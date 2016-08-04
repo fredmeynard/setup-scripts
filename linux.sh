@@ -5,7 +5,7 @@ RELEASE="$(lsb-release -cs)"
 # Store current user name (sudo sometimes clobbers this)
 CURRENT_USER=$USER
 # Location of our nice .bashrc
-BASHRC_LOCATION=""
+BASHRC_LOCATION="https://raw.githubusercontent.com/lighthouse-labs/setup-scripts/master/deps/bashrc.sh"
 
 cat <<EOF
 
@@ -98,7 +98,7 @@ mkdir -p ~/bin
 if [ -f ~/.bashrc ]; then
   mv ~/.bashrc ~/bashrc.backup
 fi
-wget https://raw.githubusercontent.com/lighthouse-labs/setup-scripts/master/deps/bashrc.sh -O ~/.bashrc
+wget $BASHRC_LOCATION -O ~/.bashrc
 
 
 echo "\n\n--- DONE! ---"
