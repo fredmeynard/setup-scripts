@@ -23,11 +23,11 @@ General:
 * tmux (and/or screen) √
 * htop √
 * Postgres √
-* MongoDB √
+* MongoDB - TODO: FIX INSTALLATION
 * Redis √
 * Node/nvm √
 * Ruby/rbenv √
-* heroku-toolbelt √
+* heroku-toolbelt - DISABLED FOR NOW
 * git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization) √
 * ssh key generation (maybe?)
