@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get Ubuntu release name (the animal thingie)
-RELEASE="$(lsb-release -cs)"
+RELEASE="$(lsb_release -cs)"
 # Store current user name (sudo sometimes clobbers this)
 CURRENT_USER=$USER
 # Location of our nice .bashrc
