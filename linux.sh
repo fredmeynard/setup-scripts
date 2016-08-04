@@ -45,7 +45,7 @@ sudo apt-get -y install build-essential git tig vim wget htop tmux screen librea
 
 printf "\n\n\n--- Configuring MongoDB\n\n"
 if [ "$RELEASE" == "xenial" ]; then
-  sudo cat <<EOF > /lib/systemd/system/mongod.service
+  cat <<EOF > /tmp/mongod.service
 [Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target
@@ -59,6 +59,7 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 [Install]
 WantedBy=multi-user.target
 EOF
+  sudo mv /tmp/mongod.service /lib/systemd/system/mongod.service
   sudo systemctl enable mongodb
 fi
 
@@ -87,8 +88,8 @@ eval "$(rbenv init -)"
 rbenv install 2.3.1 && rbenv global 2.3.1
 
 
-printf "\n\n\n--- Installing Heroku toolbelt\n\n"
-wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+# printf "\n\n\n--- Installing Heroku toolbelt\n\n"
+# wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 
 printf "\n\n\n--- Terminal configuration\n\n"

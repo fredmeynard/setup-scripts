@@ -38,7 +38,7 @@ Linux:
   * Ensure `-dev` libraries are also installed. √
 * Redis and MongoDB: `-dev` libraries must also be installed. √
 * Ensure Postgres, Mongo and Redis are starting on boot √
-  * Also show students how to stop and restart these services 
+  * Also show students how to stop and restart these services
 
 MacOS:
 * `xcode-select --install`
