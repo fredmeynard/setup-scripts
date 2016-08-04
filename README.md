@@ -29,7 +29,7 @@ General:
 * heroku-toolbelt
 * foreman (good to test apps before deploying to Heroku)
 * htop
-* git-aware bash prompt
+* git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization)
 * ssh key generation (maybe?)
 
