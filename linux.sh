@@ -28,7 +28,7 @@ if [ "$(sudo whoami)" != "root" ]; then
   exit 1
 fi
 
-echo "\n\n--- Updating software package information"
+printf "\n\n\n--- Updating software package information\n\n"
 # Add MongoDB repo
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 echo "deb http://repo.mongodb.org/apt/ubuntu $RELEASE/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
@@ -36,14 +36,14 @@ echo "deb http://repo.mongodb.org/apt/ubuntu $RELEASE/mongodb-org/3.2 multiverse
 sudo apt-get -y update
 
 
-echo "\n\n--- Installing essential dev tools and databases"
+printf "\n\n\n--- Installing essential dev tools and databases\n\n"
 sudo apt-get -y install build-essential git tig vim wget htop tmux screen libreadline-dev \
                 mongodb-org postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
                 redis-server redis-tools
 
 
 
-echo "\n\n--- Configuring MongoDB"
+printf "\n\n\n--- Configuring MongoDB\n\n"
 if [ "$RELEASE" == "xenial" ]; then
   sudo cat <<EOF > /lib/systemd/system/mongod.service
 [Unit]
@@ -63,12 +63,12 @@ EOF
 fi
 
 
-echo "\n\n--- Configuring Postgres"
+printf "\n\n\n--- Configuring Postgres\n\n"
 sudo -u postgres createuser --superuser $CURRENT_USER
 sudo -u postgres createdb $CURRENT_USER
 
 
-echo "\n\n--- Installing Node.js with nvm"
+printf "\n\n\n--- Installing Node.js with nvm\n\n"
 export NVM_DIR="$HOME/.nvm" && (
   git clone https://github.com/creationix/nvm.git "$NVM_DIR"
   cd "$NVM_DIR"
@@ -78,7 +78,7 @@ nvm install node
 nvm use node
 
 
-echo "\n\n--- Installing Ruby with rbenv and ruby-build"
+printf "\n\n\n--- Installing Ruby with rbenv and ruby-build\n\n"
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 cd ~/.rbenv && src/configure && make -C src
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
@@ -87,11 +87,11 @@ eval "$(rbenv init -)"
 rbenv install 2.3.1 && rbenv global 2.3.1
 
 
-echo "\n\n--- Installing Heroku toolbelt"
+printf "\n\n\n--- Installing Heroku toolbelt\n\n"
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 
-echo "\n\n--- Terminal configuration"
+printf "\n\n\n--- Terminal configuration\n\n"
 mkdir -p ~/bin
 if [ -f ~/.bashrc ]; then
   mv ~/.bashrc ~/bashrc.backup
@@ -99,7 +99,7 @@ fi
 wget $BASHRC_LOCATION -O ~/.bashrc
 
 
-echo "\n\n--- DONE! ---"
+printf "\n\n\n--- DONE! ---\n\n"
 cat <<EOF
 
 Your computer is now ready for the web bootcamp! Open a new terminal window and
