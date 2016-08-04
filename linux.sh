@@ -36,12 +36,14 @@ echo "deb http://repo.mongodb.org/apt/ubuntu $RELEASE/mongodb-org/3.2 multiverse
 sudo apt-get -y update
 
 
-echo "\n\n--- Installing essential dev tools"
-sudo apt-get -y install build-essential git tig vim wget htop tmux screen
+echo "\n\n--- Installing essential dev tools and databases"
+sudo apt-get -y install build-essential git tig vim wget htop tmux screen libreadline-dev \
+                mongodb-org postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
+                redis-server redis-tools
 
 
-echo "\n\n--- Installing MongoDB"
-sudo apt-get install -y mongodb-org
+
+echo "\n\n--- Configuring MongoDB"
 if [ "$RELEASE" == "xenial" ]; then
   sudo cat <<EOF > /lib/systemd/system/mongod.service
 [Unit]
@@ -61,14 +63,9 @@ EOF
 fi
 
 
-echo "\n\n--- Installing Postgres and related libraries"
-sudo apt-get install -y postgresql postgresql-contrib postgresql-client postgresql-server-dev-all
+echo "\n\n--- Configuring Postgres"
 sudo -u postgres createuser --superuser $CURRENT_USER
 sudo -u postgres createdb $CURRENT_USER
-
-
-echo "\n\n--- Installing Redis and related libraries"
-sudo apt-get install -y redis-server redis-tools
 
 
 echo "\n\n--- Installing Node.js with nvm"
