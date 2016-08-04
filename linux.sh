@@ -25,6 +25,7 @@ EOF
 # Trigger sudo permissions - this should persist through the script
 if [ "$(sudo whoami)" != "root" ]; then
   echo "It looks like you typed your password wrong too many times! Please run this script again."
+  exit 1
 fi
 
 echo "\n\n--- Updating software package information"
