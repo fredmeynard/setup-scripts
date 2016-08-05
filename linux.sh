@@ -44,8 +44,10 @@ sudo apt-get -y install build-essential git tig vim wget htop tmux screen librea
 
 
 printf "\n\n\n--- Configuring MongoDB\n\n"
+# Blame bash for this horrible HEREDOCS syntax
 if [ "$RELEASE" == "xenial" ]; then
-  cat <<EOF > /tmp/mongod.service
+(
+cat <<-'EOF'
 [Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target
@@ -59,6 +61,8 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 [Install]
 WantedBy=multi-user.target
 EOF
+)> /tmp/mongod.service
+
   sudo mv /tmp/mongod.service /lib/systemd/system/mongod.service
   sudo systemctl enable mongodb
 fi
