@@ -44,7 +44,7 @@ printf "\n\n\n--- Updating software package information\n\n"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 echo "deb http://repo.mongodb.org/apt/ubuntu $RELEASE/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 # Add Atom repo
-sudo add-apt-repository ppa:webupd8team/atom
+sudo add-apt-repository -y ppa:webupd8team/atom
 # Update!
 sudo apt-get -y update
 
