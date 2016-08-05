@@ -2,10 +2,15 @@
 
 # Get Ubuntu release name (the animal thingie)
 RELEASE="$(lsb_release -cs)"
+
 # Store current user name (sudo sometimes clobbers this)
 CURRENT_USER=$USER
+
 # Location of our nice .bashrc
 BASHRC_LOCATION="https://raw.githubusercontent.com/lighthouse-labs/setup-scripts/master/deps/bashrc.sh"
+
+# Ruby version to use
+RUBY_VERSION="2.3.1"
 
 cat <<EOF
 
@@ -53,7 +58,7 @@ printf "\n\n\n--- Configuring MongoDB\n\n"
 # Blame bash for this horrible HEREDOCS syntax
 if [ "$RELEASE" == "xenial" ]; then
 (
-sudo cat <<-'EOF'
+cat <<-'EOF'
 [Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target
@@ -67,7 +72,8 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 [Install]
 WantedBy=multi-user.target
 EOF
-)> /lib/systemd/system/mongodb.service
+)> /tmp/mongodb.service
+  sudo mv /tmp/mongodb.service /lib/systemd/system/mongodb.service
   sudo systemctl enable mongodb
 fi
 
@@ -93,11 +99,8 @@ cd ~/.rbenv && src/configure && make -C src
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-rbenv install 2.3.1 && rbenv global 2.3.1
-
-
-# printf "\n\n\n--- Installing Heroku toolbelt\n\n"
-# wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION
+gem install --no-ri --no-rdoc bundler pry
 
 
 printf "\n\n\n--- Terminal configuration\n\n"

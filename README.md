@@ -27,7 +27,6 @@ General:
 * Redis √
 * Node/nvm √
 * Ruby/rbenv √
-* heroku-toolbelt - DISABLED FOR NOW
 * git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization) √
 * ssh key generation (maybe?)
