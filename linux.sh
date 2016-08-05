@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This will be "vagrant" or anything besides "" when we run this
+# on - you guessed - Vagrant.
+VAGRANT="$1"
+
 # Get Ubuntu release name (the animal thingie)
 RELEASE="$(lsb_release -cs)"
 
@@ -43,10 +47,12 @@ printf "\n\n\n--- Updating software package information\n\n"
 # Add MongoDB repo
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 echo "deb http://repo.mongodb.org/apt/ubuntu $RELEASE/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-# Add Atom repo
-sudo add-apt-repository -y ppa:webupd8team/atom
-# Add SublimeText repo
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+if [ "$VAGRANT" == "" ]; then
+  # Add Atom repo
+  sudo add-apt-repository -y ppa:webupd8team/atom
+  # Add SublimeText repo
+  sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+fi
 # Update!
 sudo apt-get -y update
 
@@ -54,8 +60,10 @@ sudo apt-get -y update
 printf "\n\n\n--- Installing essential dev tools and databases\n\n"
 sudo apt-get -y install build-essential git tig vim wget htop tmux screen libreadline-dev \
                 mongodb-org postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
-                redis-server redis-tools \
-                atom sublime-text-installer
+                redis-server redis-tools
+if [ "$VAGRANT" == "" ]; then
+  sudo apt-get -y install atom sublime-text-installer
+fi
 
 
 
