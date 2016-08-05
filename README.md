@@ -26,6 +26,7 @@ General:
 * htop √
 * Postgres √
 * MongoDB √
+* SQLite3 √
 * Redis √
 * Node/nvm √
 * Ruby/rbenv √

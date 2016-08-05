@@ -60,11 +60,11 @@ sudo apt-get -y update
 printf "\n\n\n--- Installing essential dev tools and databases\n\n"
 sudo apt-get -y install build-essential git tig vim wget htop tmux screen libreadline-dev \
                 mongodb-org postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
-                redis-server redis-tools
+                redis-server redis-tools \
+                sqlite3 libsqlite3-dev
 if [ "$VAGRANT" == "" ]; then
   sudo apt-get -y install atom sublime-text-installer
 fi
-
 
 
 printf "\n\n\n--- Configuring MongoDB\n\n"
@@ -113,7 +113,8 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION
-gem install --no-ri --no-rdoc bundler pry
+sudo mv /usr/bin/gem /usr/bin/gem.old
+gem install --no-ri --no-rdoc bundler pry pg sqlite3
 
 
 printf "\n\n\n--- Terminal configuration\n\n"
