@@ -113,7 +113,10 @@ wget $BASHRC_LOCATION -O ~/.bashrc
 printf "\n\n\n--- DONE! ---\n\n"
 cat <<EOF
 
-Your computer is now ready for the web bootcamp! Open a new terminal window and
-enjoy!
+Your computer is now ready for the web bootcamp!
+Press enter to reload the terminal and start building awesome things.
 
 EOF
+read
+clear
+exec bash
