@@ -24,9 +24,15 @@ EOF
 
 # Trigger sudo permissions - this should persist through the script
 if [ "$(sudo whoami)" != "root" ]; then
-  echo "It looks like you typed your password wrong too many times! Please run this script again."
+cat <<EOF
+
+It looks like you typed the wrong password too many times!
+Please run this script again.
+
+EOF
   exit 1
 fi
+
 
 printf "\n\n\n--- Updating software package information\n\n"
 # Add MongoDB repo
