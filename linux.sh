@@ -53,7 +53,7 @@ printf "\n\n\n--- Configuring MongoDB\n\n"
 # Blame bash for this horrible HEREDOCS syntax
 if [ "$RELEASE" == "xenial" ]; then
 (
-cat <<-'EOF'
+sudo cat <<-'EOF'
 [Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target
@@ -67,9 +67,7 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 [Install]
 WantedBy=multi-user.target
 EOF
-)> /tmp/mongod.service
-
-  sudo mv /tmp/mongod.service /lib/systemd/system/mongod.service
+)> /lib/systemd/system/mongodb.service
   sudo systemctl enable mongodb
 fi
 
@@ -118,5 +116,6 @@ Press enter to reload the terminal and start building awesome things.
 
 EOF
 read
+cd ~
 clear
 exec bash
