@@ -30,6 +30,7 @@ General:
 * Redis √
 * Node/nvm √
 * Ruby/rbenv √
+* Imagemagick √
 * git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization) √
 * atom √

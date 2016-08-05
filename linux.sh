@@ -59,9 +59,8 @@ sudo apt-get -y update
 
 printf "\n\n\n--- Installing essential dev tools and databases\n\n"
 sudo apt-get -y install build-essential git tig vim wget htop tmux screen libreadline-dev \
-                mongodb-org postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
-                redis-server redis-tools \
-                sqlite3 libsqlite3-dev
+                postgresql postgresql-contrib postgresql-client postgresql-server-dev-all \
+                mongodb-org redis-server redis-tools sqlite3 libsqlite3-dev imagemagick
 if [ "$VAGRANT" == "" ]; then
   sudo apt-get -y install atom sublime-text-installer
 fi
