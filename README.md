@@ -29,6 +29,7 @@ General:
 * Ruby/rbenv √
 * git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization) √
+* atom √
 * ssh key generation (maybe?)
 
 Linux:
