@@ -23,7 +23,7 @@ General:
 * tmux (and/or screen) √
 * htop √
 * Postgres √
-* MongoDB - TODO: FIX INSTALLATION
+* MongoDB √
 * Redis √
 * Node/nvm √
 * Ruby/rbenv √
