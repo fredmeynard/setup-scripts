@@ -13,6 +13,8 @@ For the Linux version: we'll make it clear this script is **only guaranteed to r
 * A single script should do the whole setup process with minimal user intervention.
 * The script should be kept **updated and stable at all times**.
 * The Vagrant box should be in a blank state when downloaded and use the exact same script to do the setup (excluding port forwarding, folder sharing and other Vagrant-specific details).
+  * To run the script in Vagrant mode, just call it with a parameter: `./linux.sh vagrant`
+  * No parameter = desktop install.
 
 ## List of tools to install
 
