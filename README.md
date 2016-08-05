@@ -30,6 +30,7 @@ General:
 * git-aware bash prompt √
 * Create and add `~/bin` to path (very useful for further customization) √
 * atom √
+* sublime text √
 * ssh key generation (maybe?)
 
 Linux:
